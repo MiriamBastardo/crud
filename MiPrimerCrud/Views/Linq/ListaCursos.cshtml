@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IQueryable<Curso>
+@{
+    Layout = "_Layout-Secundario";
+}
+<h1>Listado Cursos</h1>
+<form asp-controller="Linq" asp-action="ListaCursos" method="GET">
+    <div class="row">
+        <div class="col-md-4">
+            <label>Filtro:</label>
+            <input name="filtro" value="@ViewBag.filtro" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <label>Fecha Desde:</label>
+            <input type="date" name="fechaDesde" value="@ViewBag.fechaDesde" class="form-control" />
+
+        </div>
+        <div class="col-md-4">
+            <label>Fecha Hasta:</label>
+            <input type="date" name="fechaHasta" value="@ViewBag.fechaHasta" class="form-control" />
+
+        </div>
+       
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit">Enviar</button>
+</form>
+
+<table class="table  table-striped">
+    @foreach (var cur in Model)
+    {
+
+        <tr>
+            <td>@cur.Id</td>
+            <td>@cur.Nombre</td>
+            <td>@cur.Lugar</td>
+            <td>@cur.FechaInicio</td>
+            <td>@cur.Activo</td>
+
+        </tr>
+
+    }
+</table>
+<h5>@ViewBag.Autor</h5>
+

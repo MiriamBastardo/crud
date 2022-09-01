@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model IQueryable<Asignatura>
+<h1>Ejemplo de LINQ</h1>
+<form asp-controller="Linq" asp-action="Index" method="GET">
+
+    <input name="filtro" value="@ViewBag.filtro" />
+    <button class="btn btn-primary" type="submit">Enviar</button>
+
+</form>
+
+<table class="table  table-striped">
+    @foreach (var asig in Model)
+    {
+
+        <tr>
+            <td>@asig.id</td>
+            <td>@asig.Nombre</td>
+            <td>@asig.Cursillo?</td>
+
+        </tr>
+
+
+
+    }
+</table>
